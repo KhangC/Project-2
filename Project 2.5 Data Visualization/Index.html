@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<style>
+        * {box-sizing: border-box}
+        
+        body, html {
+          height: 100%;
+          margin: 0;
+          font-family: Arial;
+        }
+        
+        .tablink {
+          background-color: #555;
+          color: white;
+          float: left;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          padding: 14px 16px;
+          font-size: 17px;
+          width: 25%;
+        }
+        
+        .tablink:hover {
+          background-color: #777;
+        }
+        
+        .tabcontent {
+          color: black;
+          display: none;
+          padding: 100px 20px;
+          height: 100%;
+        }
+        
+        </style>
+        </head>
+        <body>
+        
+        <button class="tablink" onclick="openPage('Home', this, 'red')"id="defaultOpen">Home</button>
+        <button class="tablink" onclick="openPage('Data', this, 'red')">Data</button>
+        <button class="tablink" onclick="openPage('Analysis', this, 'red')">Analysis</button>
+        <button class="tablink" onclick="openPage('Conclusion', this, 'red')">Conclusion</button>
+        
+        <div id="Home" class="tabcontent">
+    
+          <p>    <h2>Story Telling</h2>
+            <p>Hello Classmates,
+            </p>
+  
+            <p>I began this project like many of you searching for a subject worthy of tackling. 
+              However, confronted by a question at work I realized that this project will be a great start in attempting to find an answer. 
+              Thus, the overall theme of this project is figuring out between two promotion which returns the best ROI. 
+              Answering this question required that I find the baseline sales and work from there. Yet, that was easier said than done. 
+              The next few passages will be how I went about analyzing, coding and charting my data. 
+                   </p>
+  
+            <p>Finding the baseline: I went about this with the quartile & outliers in mind. There were many articles published about how to obtain  
+                a basline sales but I found that quartile & outliers would benefit me more. Using the quartile & outliers and plotting a box and whiskers 
+                will allow me to figure out what outliers I need to eliminate in order to find the range of the revenue.</p>
+
+                <p>Coding: I gather the data from an online database and changed a few of the numbers to keep the data source confidental.
+                  Then I used Python to transfer the excel file over into a MySql data. I plan on using ajax and jquery to display my dataset.
+                  In terms of plotting, I use basic chartting code to display my visuals. 
+                
+                  /p>
+
+                <a target="_ETL" href="C:/Users/Khang/OneDrive/Desktop/Project 2.5 Data Visualization/ETL.JPG">
+                  <img src="C:/Users/Khang/OneDrive/Desktop/Project 2.5 Data Visualization/ETL.JPG" alt="ETL">
+        </div>
+        
+        <div id="Data" class="tabcontent">
+          <h3>Data</h3> 
+          <body>
+                <p><strong>Click to view data</strong></p> 
+                <div id = "container" > 
+                
+               <div id="records"></div> 
+               <p>
+                   <input type= "button" id = "getLArevenue" value = "Get Data" />
+               </p>
+               </div> 
+               <script src=”http://code.jquery.com/jquery-3.1.1.min.js”></script>
+                
+               <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+               <script>
+                 $.getJSON('Dataset.php', function(data) {
+                   $.each(data, function(click) {
+                     $("#" + fieldName).val(fieldValue);
+                   });
+                 });
+               </script>
+               </script> 
+               </body>
+          </script>
+        
+
+</script>
+
+            </body>
+        </div>
+        
+        <div id="Analysis" class="tabcontent">
+                <body>
+
+                        
+                              <h1>Promotion Dashboards</h1>
+                              <p>Analyzing the Data</p>
+                              <body>
+                                    <div id="plot"></div>
+                                    <div id="plot1"></div>
+                                    <script src="index.js"></script>
+                                </body>
+                                     
+                                
+                            
+                                                        
+                      </body>
+        </div>
+        
+        <div id="Conclusion" class="tabcontent">
+          <h3>Conclusion</h3>
+          <p>With the baseline identified, I took the difference from the range, add them together, and subtract the total from trade spend.</p>
+          
+          <body>
+              <table border="1">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Promotion Conclusion</th>
+                    </tr>
+                    <tr>
+                      <th>Week</th>
+                      <th>Total</th>
+                      <th>Trade Spend</th>
+                      <th>ROI</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>End Cap</td>
+                      <td>$122,635.48</td>
+                      <td>$35,000</td>
+                      <td>$87,635.48</td>
+                    </tr>
+                    <tr>
+                      <td>IRC</td>
+                      <td>$167,160.07</td>
+                      <td>$126,475</td>
+                      <td>$40,685.07</td>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="4">End Cap vs IRC</td>
+                    </tr>
+                  </tfoot>
+                </table>
+          </body>
+        </div>
+        
+        <script>
+        function openPage(pageName,elmnt,color) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablink");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+          }
+          document.getElementById(pageName).style.display = "block";
+          elmnt.style.backgroundColor = color;
+        }
+        
+        document.getElementById("defaultOpen").click();
+        </script>
+           
+        </body>
+
+
+
+</html>
